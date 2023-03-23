@@ -1,5 +1,7 @@
 import numpy as np
 
+#Electrical system
+
 R1 = 3.0
 R2 = 2.0
 R3 = 8.0
