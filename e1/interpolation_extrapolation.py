@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 def newtons_divided_differences(x, y, n, c):
 
@@ -14,6 +15,10 @@ def newtons_divided_differences(x, y, n, c):
     
     return c
 
+# x_eval: x to evaluate
+# c: coefficients from newtons divided differences
+# d: degree of polynomial
+# x: original x values from data
 def horner_evaluation(x_eval, c, d, x):
     yy = c[d]
     for i in range(d):
@@ -40,9 +45,16 @@ c = newtons_divided_differences(x, y, n, c)
 d = 2 #Degree of polynomial
 x_eval = 100
 
-#print(c)
+print("Answer to a): ", c)
 
 value = horner_evaluation(100, c, d, x)
 
-print("Answer to a) : ", value)
+print("Answer to b) : ", value)
 
+yyy = np.array([horner_evaluation(x[0], c, d, x), horner_evaluation(x[1], c, d, x), horner_evaluation(x[2], c, d, x)])
+
+plt.plot(x, yyy)
+#plt.show()
+
+#It's just a fitted polynomial? Only correct for the base points. This is even outside of range.
+print("Answer to c) : ", horner_evaluation(0, c, d, x)) 
